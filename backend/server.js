@@ -1,11 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const path = require('path'); // Require the 'path' module
+
 require('dotenv').config();
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'build')));
 const cors = require('cors');
 const UsersControllers = require('./controllers/UsersControllers');
 const UsersDataControllers = require('./controllers/UsersDataControllers');
@@ -13,10 +12,18 @@ const UsersDataControllers = require('./controllers/UsersDataControllers');
 
 const connectDB = require('./config/db');
 connectDB(); 
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000',
+    methods: 'GET, POST, PUT, DELETE',
+    allowedHeaders: 'Content-Type, Authorization',
+    credentials: true
+}));
 
 
-
+app.get("/",(req,res) => {
+    
+ res.send("hey");      
+})
 
 app.use('/app', UsersControllers);
 app.use('/app', UsersDataControllers);
