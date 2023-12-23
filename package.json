@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "build": "cd frontend_users && npm install && npm run build"
   },
   "author": "Sankalp Gupta",
   "license": "ISC",
