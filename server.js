@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const path = require('path'); 
 require('dotenv').config();
 app.use(bodyParser.json());
 app.use(express.json());
@@ -14,11 +15,6 @@ const connectDB = require('./config/db');
 connectDB(); 
 app.use(cors());
 
-const corsOptions = {
-    origin: 'http://localhost:3000',
-  };
-  
-app.use(cors(corsOptions));
   
 app.get("/",(req,res) => {
     res.send("hey");
