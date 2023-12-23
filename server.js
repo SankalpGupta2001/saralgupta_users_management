@@ -16,9 +16,6 @@ connectDB();
 app.use(cors());
 
   
-app.get("/",(req,res) => {
-    res.send("hey");
-});
 
 
 app.use('/app', UsersControllers);
